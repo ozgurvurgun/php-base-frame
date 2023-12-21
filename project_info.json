@@ -1,0 +1,11 @@
+{
+  "project_name": "Compart Cafe Order Management System",
+  "description": "Cafe-Restaurant order management system",
+  "version": "1.0.0",
+  "author": "Özgür VURGUN <ozgurvurgun35@gmail.com>",
+  "license": "MIT",
+  "repository": "https://github.com/ozgurvurgun/qr-order-management-system",
+  "require": {
+    "php_version": "8.1.6"
+  }
+}
