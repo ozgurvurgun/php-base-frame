@@ -1,14 +1,16 @@
 <?php
 
-namespace CompartSoftware\System\Core;
+namespace BaseFrame\System\Core;
 
-use CompartSoftware\Core\Controller\Helpers\Test;
+use BaseFrame\Core\Controller\Helpers\ThirdPartyRequestHandler;
 
 class Router
 {
     public static string $BASE_PATH;
+    public static string $BASE_URL;
     public static bool $hasRoute = false;
     public static array $controller;
+    public static string $url;
 
     private static function init(): void
     {
@@ -16,6 +18,7 @@ class Router
         $splitURL = explode('/', $BASE_URL);
         $splitURL = array_filter($splitURL);
         $BASE_PATH = '/' . end($splitURL);
+        self::$BASE_URL = $BASE_URL;
         self::$BASE_PATH = $BASE_PATH;
     }
 
@@ -31,7 +34,7 @@ class Router
         $method = explode('|', strtoupper($method));
         if (in_array($_SERVER['REQUEST_METHOD'], $method)) {
             $patterns = [
-                '{url}' => '([0-9a-z-A-Z]+)',
+                '{url}' => '([0-9a-z-A-Z=?_]+)',
                 '{id}'  => '([0-9]+)'
             ];
             $url = str_replace(array_keys($patterns), array_values($patterns), $url);
@@ -49,8 +52,7 @@ class Router
                     $controllerFile =  self::folderDepth($folderLength);
                     if (file_exists($controllerFile)) {
                         require $controllerFile;
-                        $className = 'CompartSoftware\App\Controller\\' . $className;
-                        new Test();
+                        $className = 'BaseFrame\App\Controller\\' . $className;
                         call_user_func_array([new $className, self::$controller[1]], $parameters);
                     }
                 }
@@ -82,8 +84,14 @@ class Router
 
     public static function hasRoute(): void
     {
-        if (self::$hasRoute === false) {
-            die('<h1>404 controller not found</h1>');
+        $ThirdPartyRequestHandler = new ThirdPartyRequestHandler();
+        $result =  $ThirdPartyRequestHandler->urlControl($_SERVER['REQUEST_URI']);
+        if (self::$hasRoute === false && $result === false) {
+            header("Location:" . self::$BASE_URL . "404");
+        } elseif (self::$hasRoute === true && $result === true) {
+            header("Location:" . self::$BASE_URL);
+        } elseif (self::$hasRoute === false && $result === true) {
+            header("Location:" . self::$BASE_URL);
         }
     }
 }

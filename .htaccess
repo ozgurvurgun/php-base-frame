@@ -1,2 +1,9 @@
+<IfModule mod_headers.c>
+    <FilesMatch "\.(otf|ttf|woff|woff2)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>
 RewriteEngine On
+  #RewriteCond %{HTTPS} off
+  #RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RewriteRule ^([0-9a-zA-Z-_/]+)$ index.php [QSA]

@@ -1,6 +1,6 @@
 <?php
 
-use \CompartSoftware\System\Core\Router;
+use \BaseFrame\System\Core\Router;
 /* 
   callback function
   Router::run('/', function () {
@@ -40,7 +40,5 @@ use \CompartSoftware\System\Core\Router;
   But it is useful to specify it for legibility.
 */
 
-//homepage start
-//Router::run('/', 'HomePage@index');
-Router::run('/', 'ExampleController@index');
+Router::run("/", "Example@index");
 Router::hasRoute();

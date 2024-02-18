@@ -1,10 +1,18 @@
 <?php
 
-namespace CompartSoftware\System\Core;
+namespace BaseFrame\System\Core;
 
 class Controller
 {
-    protected function view(string $name, array $data = []): void
+    protected string $BASE_URL;
+
+    public function __construct()
+    {
+        require 'env.php';
+        $this->BASE_URL = $BASE_URL;
+    }
+
+    public function view(string $name, array $data = []): void
     {
         /*   $data = [
              'name'    => 'ozgur',
@@ -28,7 +36,7 @@ class Controller
         $fileName = $this->modelFolderDepth($name);
         require_once 'app/models/' . $fileName;
         $name =  explode('/', $name);
-        $className = 'CompartSoftware\App\Model\\' . end($name);
+        $className = 'BaseFrame\App\Model\\' . end($name);
         return new $className();
     }
 
