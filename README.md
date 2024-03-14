@@ -22,7 +22,7 @@ git clone https://github.com/ozgurvurgun/php-base-frame.git
 ```php
 Router::run('/', 'FirstControllerClass@FirstControllerMethod');
 ```
-- <code>app/controllers</code> dizini altında <code>FirstController.php</code> dosyasını oluşturun ve aşağıda ki kodu ekleyin.
+- <code>app/controllers</code> dizini altında <code>FirstControllerClass.php</code> dosyasını oluşturun ve aşağıda ki kodu ekleyin.
 ```php
 namespace BaseFrame\App\Controller;
 use BaseFrame\System\Core\Controller;
