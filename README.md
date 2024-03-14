@@ -18,7 +18,7 @@ git clone https://github.com/ozgurvurgun/php-base-frame.git
 ```
 - Öncelikle ana dizinde ki <code>env.php</code> dosyanında base url tanımlaması yapılmalıdır. Proje klasöründe değişklik yapmadıysanız base url tanımı varsayılan olarak sorun çıkarmayacaktır. Dizini değiştirdiğinizde base url değerini değiştirmeyi unutmayın!
 
-- app / routes dizini altında <code>routes.php</code> dosyasına aşağıda ki routing kodunu ekleyin. Bunun anlamı: Base Url algılanırsa FirstController sınıfının içinde ki firstMethod metodunu çalıştır.
+- app / routes dizini altında <code>routes.php</code> dosyasına aşağıda ki routing kodunu ekleyin. Bunun anlamı: Base Url algılanırsa FirstControllerClass sınıfının içinde ki FirstControllerMethod metodunu çalıştır.
 ```php
 Router::run('/', 'FirstControllerClass@FirstControllerMethod');
 ```
