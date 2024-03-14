@@ -73,7 +73,7 @@ class FirstControllerClass extends Controller
 }
 ```
 - View'a gönderilen veri aşağıda ki şekilde kullanılır.
-```php
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
