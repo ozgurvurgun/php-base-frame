@@ -50,7 +50,7 @@ class FirstControllerClass extends Controller
   </body>
 </html>
 ```
-- Şu ana kadar url'e göre view basmayı öğrendik.
+- Şu ana kadar url'e göre view çağırmayı öğrendik.
 
 ## View'a Veri Göndermek
 - View çağırılırken view adından sonra ikinci parametre olarak gönderilecek veri, dizi olarak anahtar değer çifti olacak şekilde gönderilir. Bunu genellikle model tarafından yapılan veritabanı isteklerinden dönen cevaplar için kullanacaksınız.
@@ -85,4 +85,33 @@ class FirstControllerClass extends Controller
     <h1>Hello <?= $name ?>&nbsp;<?= $surname ?></h1>
   </body>
 </html>
+```
+## Model Çalıştırmak
+- Öncelikle ana dizinde bulunan <code>env.php</code> dosyasında veritabanı bilgilerinizi düzeltmelisiniz.
+- Ardından controller içinde aşağıda ki gibi model isteği yapılır.
+```php
+namespace BaseFrame\App\Controller;
+use BaseFrame\System\Core\Controller;
+
+class FirstControllerClass extends Controller
+{
+    public function FirstControllerMethod()
+    {
+        $result = $this->model('Select')->GetTable();
+    }
+}
+```
+- Select model sınıfında ki GetTable fonksiyonunun çalışması gerektiğini belirttik. Şimdi ilgili model'i oluşturmalıyız.
+- app / models dizini altında <code>Select.php</code> dosyasını oluşturun. Ardından dosyaya aşağıda ki kodu yerleştirin.
+```php
+namespace BaseFrame\App\Model;
+use BaseFrame\System\Core\Model;
+
+class Select extends Model
+{
+    public function GetTable()
+    {
+        echo "model run";
+    }
+}
 ```

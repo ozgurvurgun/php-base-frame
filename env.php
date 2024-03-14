@@ -10,6 +10,6 @@
 $BASE_URL = "http://localhost/php-base-frame";
 $DB_HOST = "localhost";
 $DB_CHAREST = "utf8mb4";
-$DB_NAME = "test";
-$DB_USER = "root";
+$DB_NAME = "";
+$DB_USER = "";
 $DB_PASSWORD = "";
