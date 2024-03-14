@@ -28,9 +28,6 @@ class Controller
         require_once 'app/views/' . $fileName;
     }
 
-    /**
-     * @return mixed class
-     */
     protected function model(string $name)
     {
         $fileName = $this->modelFolderDepth($name);
