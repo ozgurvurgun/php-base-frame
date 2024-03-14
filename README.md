@@ -53,7 +53,7 @@ class FirstControllerClass extends Controller
 - Şu ana kadar url'e göre view basmayı öğrendik.
 
 ## View'a Veri Göndermek
-- View çağırılırken view adından sonra ikinci parametre olarak gönderilecek veri, dizi olarak anahtar değer çifti olacak şekilde gönderilir.
+- View çağırılırken view adından sonra ikinci parametre olarak gönderilecek veri, dizi olarak anahtar değer çifti olacak şekilde gönderilir. Bunu genellikle model tarafından yapılan veritabanı isteklerinden dönen cevaplar için kullanacaksınız.
 ```php
 namespace BaseFrame\App\Controller;
 use BaseFrame\System\Core\Controller;
