@@ -1,3 +1,5 @@
+# php-base-frame
+
 >PHP Base Frame Nedir ? Amacı Nedir ?
 <p>
 Laravel, Symfony vb gibi bir framework kullanmaya başladıysak ve bu sistemlerin OOP, MVC... gibi kavramlarını ve bunların metodolojilerini içselleştirmediysek günün sonunda çok efektif işler yapıp yapmadığımız bir soru işaretidir. Kullandığı sistemin nasıl çalıştığını iyi kavramış bir geliştirici hiç şüphesiz çok daha yüksek kalitede geliştirme yapacaktır.
@@ -15,8 +17,8 @@ Framework çalışma zamanında ilk olarak routing sistemi çalışıyor. Burada
 git clone https://github.com/ozgurvurgun/php-base-frame.git
 ```
 - Öncelikle ana dizinde ki <code>env.php</code> dosyanında base url tanımlaması yapılmalıdır. Proje klasöründe değişklik yapmadıysanız base url tanımı varsayılan olarak sorun çıkarmayacaktır. Dizini değiştirdiğinizde base url değerini değiştirmeyi unutmayın!
-<br />
--  app / routes dizini altında <code>routes.php</code> dosyasına aşağıda ki routing kodunu ekleyin. Bunun anlamı: Base Url algılanırsa FirstController sınıfının içinde ki firstMethod metodunu çalıştır.
+
+- app / routes dizini altında <code>routes.php</code> dosyasına aşağıda ki routing kodunu ekleyin. Bunun anlamı: Base Url algılanırsa FirstController sınıfının içinde ki firstMethod metodunu çalıştır.
 ```php
 Router::run("/", "FirstController@FirstMethod");
 ```
