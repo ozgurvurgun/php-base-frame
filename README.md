@@ -18,11 +18,11 @@ git clone https://github.com/ozgurvurgun/php-base-frame.git
 ```
 - Öncelikle ana dizinde ki <code>env.php</code> dosyanında base url tanımlaması yapılmalıdır. Proje klasöründe değişklik yapmadıysanız base url tanımı varsayılan olarak sorun çıkarmayacaktır. Dizini değiştirdiğinizde base url değerini değiştirmeyi unutmayın!
 
-- app / routes dizini altında <code>routes.php</code> dosyasına aşağıda ki routing kodunu ekleyin. Bunun anlamı: Base Url algılanırsa FirstControllerClass sınıfının içinde ki FirstControllerMethod metodunu çalıştır.
+- <code>app/routes</code> dizini altında <code>routes.php</code> dosyasına aşağıda ki routing kodunu ekleyin. Bunun anlamı: Base Url algılanırsa FirstControllerClass sınıfının içinde ki FirstControllerMethod metodunu çalıştır.
 ```php
 Router::run('/', 'FirstControllerClass@FirstControllerMethod');
 ```
-- app / controllers dizini altında <code>FirstController.php</code> dosyasını oluşturun ve aşağıda ki kodu ekleyin.
+- <code>app/controllers</code> dizini altında <code>FirstController.php</code> dosyasını oluşturun ve aşağıda ki kodu ekleyin.
 ```php
 namespace BaseFrame\App\Controller;
 use BaseFrame\System\Core\Controller;
@@ -36,7 +36,7 @@ class FirstControllerClass extends Controller
 }
 ```
 
-- app / views dizini altında <code>firstView.php</code> dosyasını oluşturun.
+- <code>app/views</code> dizini altında <code>firstView.php</code> dosyasını oluşturun.
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -102,7 +102,7 @@ class FirstControllerClass extends Controller
 }
 ```
 - Select model sınıfında ki GetTable fonksiyonunun çalışması gerektiğini belirttik. Şimdi ilgili model'i oluşturmalıyız.
-- app / models dizini altında <code>Select.php</code> dosyasını oluşturun. Ardından dosyaya aşağıda ki kodu yerleştirin.
+- <code>app/models</code> dizini altında <code>Select.php</code> dosyasını oluşturun. Ardından dosyaya aşağıda ki kodu yerleştirin.
 ```php
 namespace BaseFrame\App\Model;
 use BaseFrame\System\Core\Model;
