@@ -10,3 +10,38 @@ PHP Base Frame temel olarak bu noktada ki boşluğu doldurmaya çalışıyor. Si
 <p>
 Framework çalışma zamanında ilk olarak routing sistemi çalışıyor. Burada ki parse işlemi sonrası çalıştırılacak controller bulunuyor ve ardından ilgili controller çalıştırılıyor. Controller da mantıksal işlemler yapılıyor. Duruma göre model'lar çalıştırılıp veri tabanından dönen değerler burada işlenip view'a gönderiliyor veya direkt view basılıyor. Sistem kabaca bu şekilde çalışıyor. Aşağıda kı kullanma kılavuzunda sistemin nasıl çalıştığını daha net göreceksiniz.
 </p>
+
+## İlk Proje
+-  app / routes dizini altında <code>routes.php</code> dosyasına aşağıda ki routing kodunu ekleyin. Bunun anlamı: Base Url algılanırsa FirstController sınıfının içinde ki firstMethod metodunu çalıştır.
+```php
+Router::run("/", "FirstController@FirstMethod");
+```
+- app / controllers dizini altında <code>FirstController.php</code> dosyasını oluşturun ve aşağıda ki kodu ekleyin.
+```php
+namespace BaseFrame\App\Controller;
+use BaseFrame\System\Core\Controller;
+
+class FirstController extends Controller
+{
+    public function firstMethod()
+    {
+        $this->view("firstView");
+    }
+}
+```
+
+- app / views dizini altında <code>firstView.php</code> dosyasını oluşturun.
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PHP BASE FRAME</title>
+  </head>
+  <body>
+    <h1>Hello World</h1>
+  </body>
+</html>
+```
+- Şu ana kadar url'e göre view basmayı öğrendik.
