@@ -20,18 +20,18 @@ git clone https://github.com/ozgurvurgun/php-base-frame.git
 
 - app / routes dizini altında <code>routes.php</code> dosyasına aşağıda ki routing kodunu ekleyin. Bunun anlamı: Base Url algılanırsa FirstController sınıfının içinde ki firstMethod metodunu çalıştır.
 ```php
-Router::run("/", "FirstController@FirstMethod");
+Router::run('/', 'FirstControllerClass@FirstControllerMethod');
 ```
 - app / controllers dizini altında <code>FirstController.php</code> dosyasını oluşturun ve aşağıda ki kodu ekleyin.
 ```php
 namespace BaseFrame\App\Controller;
 use BaseFrame\System\Core\Controller;
 
-class FirstController extends Controller
+class FirstControllerClass extends Controller
 {
-    public function firstMethod()
+    public function FirstControllerMethod()
     {
-        $this->view("firstView");
+        $this->view('firstView');
     }
 }
 ```
@@ -51,3 +51,38 @@ class FirstController extends Controller
 </html>
 ```
 - Şu ana kadar url'e göre view basmayı öğrendik.
+
+## View'a Veri Göndermek
+- View çağırılırken view adından sonra ikinci parametre olarak gönderilecek veri, dizi olarak anahtar değer çifti olacak şekilde gönderilir.
+```php
+namespace BaseFrame\App\Controller;
+use BaseFrame\System\Core\Controller;
+
+class FirstControllerClass extends Controller
+{
+    public function FirstControllerMethod()
+    {
+        $name = 'Ozgur';
+        $surname = 'Vurgun';
+
+        $this->view('firstView',[
+            'name' => $name,
+            'surname' => $surname
+        ]);
+    }
+}
+```
+- View'a gönderilen veri aşağıda ki şekilde kullanılır.
+```php
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PHP BASE FRAME</title>
+  </head>
+  <body>
+    <h1>Hello <?= $name ?>&nbsp;<?= $surname ?></h1>
+  </body>
+</html>
+```
