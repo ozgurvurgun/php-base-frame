@@ -12,6 +12,12 @@ Framework çalışma zamanında ilk olarak routing sistemi çalışıyor. Burada
 </p>
 
 ## İlk Proje
+- Kurulum
+```bash
+git clone https://github.com/ozgurvurgun/php-base-frame.git
+```
+- Öncelikle ana dizinde ki <code>env.php</code> dosyanında base url tanımlaması yapılmalıdır. Proje klasöründe değişklik yapmadıysanız base url tanımı varsayılan olarak sorun çıkarmayacaktır. Dizini değiştirdiğinizde base url değerini değiştirmeyi unutmayın!
+<br />
 -  app / routes dizini altında <code>routes.php</code> dosyasına aşağıda ki routing kodunu ekleyin. Bunun anlamı: Base Url algılanırsa FirstController sınıfının içinde ki firstMethod metodunu çalıştır.
 ```php
 Router::run("/", "FirstController@FirstMethod");
