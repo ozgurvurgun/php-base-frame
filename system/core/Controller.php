@@ -6,7 +6,7 @@ class Controller
 {
     protected string $BASE_URL;
 
-    protected function __construct()
+    public function __construct()
     {
         require 'env.php';
         $this->BASE_URL = $BASE_URL;
