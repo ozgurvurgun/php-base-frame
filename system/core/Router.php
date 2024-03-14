@@ -84,14 +84,8 @@ class Router
 
     public static function hasRoute(): void
     {
-        $ThirdPartyRequestHandler = new ThirdPartyRequestHandler();
-        $result =  $ThirdPartyRequestHandler->urlControl($_SERVER['REQUEST_URI']);
-        if (self::$hasRoute === false && $result === false) {
+        if (self::$hasRoute === false) {
             header("Location:" . self::$BASE_URL . "404");
-        } elseif (self::$hasRoute === true && $result === true) {
-            header("Location:" . self::$BASE_URL);
-        } elseif (self::$hasRoute === false && $result === true) {
-            header("Location:" . self::$BASE_URL);
         }
     }
 }
