@@ -7,7 +7,7 @@
    when using base URL in static files (HTML, JavaScript, etc.)
  */
 
-$BASE_URL = "http://localhost/php-base-frame/";
+$BASE_URL = "http://localhost/php-base-frame";
 $DB_HOST = "localhost";
 $DB_CHAREST = "utf8mb4";
 $DB_NAME = "test";

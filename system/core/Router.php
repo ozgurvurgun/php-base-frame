@@ -2,8 +2,6 @@
 
 namespace BaseFrame\System\Core;
 
-use BaseFrame\Core\Controller\Helpers\ThirdPartyRequestHandler;
-
 class Router
 {
     public static string $BASE_PATH;
@@ -82,9 +80,9 @@ class Router
         return $controllerFile;
     }
 
-    public static function hasRoute(): void
+    public static function hasRoute(bool $activity = false): void
     {
-        if (self::$hasRoute === false) {
+        if (self::$hasRoute === false && $activity) {
             header("Location:" . self::$BASE_URL . "404");
         }
     }

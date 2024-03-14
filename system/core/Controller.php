@@ -6,13 +6,13 @@ class Controller
 {
     protected string $BASE_URL;
 
-    public function __construct()
+    protected function __construct()
     {
         require 'env.php';
         $this->BASE_URL = $BASE_URL;
     }
 
-    public function view(string $name, array $data = []): void
+    protected function view(string $name, array $data = []): void
     {
         /*   $data = [
              'name'    => 'ozgur',

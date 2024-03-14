@@ -40,5 +40,5 @@ use \BaseFrame\System\Core\Router;
   But it is useful to specify it for legibility.
 */
 
-Router::run("/", "Example@index");
+
 Router::hasRoute();
