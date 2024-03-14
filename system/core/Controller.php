@@ -12,7 +12,7 @@ class Controller
         $this->BASE_URL = $BASE_URL;
     }
 
-    protected function view(string $name, array $data = []): void
+    protected function view(string $viewFile, array $data = []): void
     {
         /*   $data = [
              'name'    => 'ozgur',
@@ -24,16 +24,16 @@ class Controller
             echo $surname;
         */
         require 'env.php';
-        $fileName = $this->viewFolderDepth($name);
+        $fileName = $this->viewFolderDepth($viewFile);
         require_once 'app/views/' . $fileName;
     }
 
-    protected function model(string $name)
+    protected function model(string $modelFile)
     {
-        $fileName = $this->modelFolderDepth($name);
+        $fileName = $this->modelFolderDepth($modelFile);
         require_once 'app/models/' . $fileName;
-        $name =  explode('/', $name);
-        $className = 'BaseFrame\App\Model\\' . end($name);
+        $modelFile =  explode('/', $modelFile);
+        $className = 'BaseFrame\App\Model\\' . end($modelFile);
         return new $className();
     }
 
