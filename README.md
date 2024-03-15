@@ -2,11 +2,8 @@
 
 >Base Frame Nedir ? Amacı Nedir ?
 
-- Laravel, Symfony vb gibi bir framework kullanmaya başladıysak ve bu sistemlerin OOP, MVC... gibi kavramlarını ve bunların metodolojilerini içselleştirmediysek günün sonunda çok efektif işler yapıp yapmadığımız bir soru işaretidir. Kullandığı sistemin nasıl çalıştığını iyi kavramış bir geliştirici hiç şüphesiz çok daha yüksek kalitede geliştirme yapacaktır.
-
-- Base Frame temel olarak bu noktada ki boşluğu doldurmaya çalışıyor. Sistemin core kodu oldukça kısa ve sistemin uçtan uca nasıl çalıştığı dakikalar içinde anlaşılabilecek basitlik düzeyinde. Nesne yönelimli programlamada yeni iseniz ve bu paradigmanın MVC yaklaşımına nasıl implemente edildiğini anlamak istiyorsanız, Base Frame bunları anlama noktasında güzel bir bakış açısı sağlıyor.
-
-- Base Frame güvenlik noktasında bir yardım sunmaz, tek işi MVC sistemini tutarlı şekilde çalıştırmaktır. Güvenlik kritik noktalarda lütfen önlemlerinizi alınız.
+- Base Frame tamamen MVC mimarisini gerçeklemeyi hedef alan bir PHP çerçevesidir ve sadece bu görevini tutarlı bir şekilde yerine getirir. Direksiyon tamamen geliştiriinin kontrolündedir :)
+- Base Frame temel bir yapı sunar. Bu sofistike sistemlere geçerken altta ki paradigmaları ve kodlama yaklaşımlarını anlama noktasında hoş bir bakış açısı sunar.
 
 ## İlk Proje
 - Kurulum
