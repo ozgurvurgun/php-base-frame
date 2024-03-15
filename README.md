@@ -2,7 +2,7 @@
 
 >Base Frame Nedir ? Amacı Nedir ?
 
-- Base Frame tamamen MVC mimarisini gerçeklemeyi hedef alan bir PHP çerçevesidir ve sadece bu görevini tutarlı bir şekilde yerine getirir. Direksiyon tamamen geliştiriinin kontrolündedir :)
+- Base Frame tamamen MVC mimarisini gerçeklemeyi hedef alan bir PHP çerçevesidir ve sadece bu görevini tutarlı bir şekilde yerine getirir. Direksiyon tamamen geliştiricinin kontrolündedir :)
 - Base Frame temel bir yapı sunar. Bu sofistike sistemlere geçerken altta ki paradigmaları ve kodlama yaklaşımlarını anlama noktasında hoş bir bakış açısı sunar.
 
 ## İlk Proje
