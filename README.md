@@ -1,14 +1,12 @@
-# php base frame
+# PHP Base Frame
 
->PHP Base Frame Nedir ? Amacı Nedir ?
+>Base Frame Nedir ? Amacı Nedir ?
 
 - Laravel, Symfony vb gibi bir framework kullanmaya başladıysak ve bu sistemlerin OOP, MVC... gibi kavramlarını ve bunların metodolojilerini içselleştirmediysek günün sonunda çok efektif işler yapıp yapmadığımız bir soru işaretidir. Kullandığı sistemin nasıl çalıştığını iyi kavramış bir geliştirici hiç şüphesiz çok daha yüksek kalitede geliştirme yapacaktır.
 
-- PHP Base Frame temel olarak bu noktada ki boşluğu doldurmaya çalışıyor. Sistemin core kodu oldukça kısa ve sistemin uçtan uca nasıl çalıştığı dakikalar içinde anlaşılabilecek basitlik düzeyinde. Nesne yönelimli programlamada yeni iseniz ve bu paradigmanın MVC yaklaşımına nasıl implemente edildiğini anlamak istiyorsanız, PHP Base Frame bunları anlama noktasında güzel bir bakış açısı sağlıyor.
+- Base Frame temel olarak bu noktada ki boşluğu doldurmaya çalışıyor. Sistemin core kodu oldukça kısa ve sistemin uçtan uca nasıl çalıştığı dakikalar içinde anlaşılabilecek basitlik düzeyinde. Nesne yönelimli programlamada yeni iseniz ve bu paradigmanın MVC yaklaşımına nasıl implemente edildiğini anlamak istiyorsanız, Base Frame bunları anlama noktasında güzel bir bakış açısı sağlıyor.
 
-- Framework çalışma zamanında ilk olarak routing sistemi çalışıyor. Burada ki parse işlemi sonrası çalıştırılacak controller bulunuyor ve ardından ilgili controller çalıştırılıyor. Controller da mantıksal işlemler yapılıyor. Duruma göre model'lar çalıştırılıp veri tabanından dönen değerler burada işlenip view'a gönderiliyor veya direkt view basılıyor. Sistem kabaca bu şekilde çalışıyor. Aşağıda kı kullanma kılavuzunda sistemin nasıl çalıştığını daha net göreceksiniz.
-<br />
-- PHP Base Frame güvenlik noktasında bir yardım sunmaz, tek işi routing sistemi doğrultusunda MVC sistemini çalıştırmaktır.
+- Base Frame güvenlik noktasında bir yardım sunmaz, tek işi MVC sistemini tutarlı şekilde çalıştırmaktır. Güvenlik kritik noktalarda lütfen önlemlerinizi alınız.
 
 ## İlk Proje
 - Kurulum
@@ -320,6 +318,23 @@ class List extends Controller
 
 ## Harici Kütüphaneler
 - Projenize dahil etmek istediğiniz harici kütüphaneleri ve helper fonksiyon ve sınıflarını <code>app/libs</code> dizini altına ekleyebilirsiniz, sistem bu dizinde ki php dosyalarını otomatik olarak projeye dahil eder. Eklemelerinizi yaptıktan sonra tek yapmanız gereken bunları controller içinde kullanmaktır.
+
+## Ek Bilgiler
+- Rota tanımlamalarında büyük küçük harf hassasiyeti yoktur. Base Frame doğru dosyayı bulacak kadar zekidir :) Fakat okunurluk ve standart bir kullanım olarak sınıf isimlerini büyük harfle başlayarak yazmanız önerilir.
+- Controller ve model' lari dizinler halinde kümeleyebilirsiniz.
+  - Tek yapmanız gereken, rotada bu yolu belirtmektir. 
+  - Örneğin <code>controllers/admin</code> dizini içerisinde bir controller tanımlamak isterseniz rota tanımlamasında sınıf tanımlamasını aşağıda ki gibi yapmanız gerekir. Bu "admin dizini altında Pages adında bir sınıf var bu sınıf içinde ki homePage metodunu çalıştır" demektir.
+  ```php
+  Router::run('/', 'admin/Pages@homePage');
+  ```
+- Sınıf isimleri ile sınıf dosya isimleri aynı olmalıdır! Büyük küçük harf hassasiyeti yoktur fakat bu konuda tutarlı davranmak iyi bir programlama yaklaşımı olacaktır.
+- Sınıf isimlerinin ve sınıf dosyaların isimlerini büyük harfle başlayarak yazmak standartlara uygun ve daha okunaklı bir yaklaşımdır.
+- view dosylarını kümeleyebilirsiniz. Tek yapmanız gereken view'i çağırırken yolunu da belirtmelisiniz.
+- Örnek:
+  ```php
+  $this->view('admin/homePage');
+  ```
+
 
 
 
