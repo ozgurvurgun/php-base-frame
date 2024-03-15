@@ -53,7 +53,7 @@ class FirstControllerClass extends Controller
 - Şu ana kadar url'e göre nasıl view çağıracağımızı öğrendik.
 
 ## View'a Veri Göndermek
-- View çağırılırken view adından sonra ikinci parametre olarak gönderilecek veri, dizi olarak anahtar değer çifti olacak şekilde gönderilir. Bunu genellikle model tarafından yapılan veritabanı isteklerinden dönen cevaplar için kullanacaksınız.
+- View çağırılırken view adından sonra ikinci parametre olarak gönderilecek veri, dizi olarak anahtar değer çifti olacak şekilde gönderilir. Bunu genellikle model tarafından yapılan veri tabanı isteklerinden dönen cevaplar için kullanacaksınız.
 ```php
 namespace BaseFrame\App\Controller;
 use BaseFrame\System\Core\Controller;
@@ -87,7 +87,7 @@ class FirstControllerClass extends Controller
 </html>
 ```
 ## Model'lar İle Çalışmak
-- Öncelikle ana dizinde bulunan <code>env.php</code> dosyasında veritabanı bilgilerinizi düzeltmelisiniz.
+- Öncelikle ana dizinde bulunan <code>env.php</code> dosyasında veri tabanı bilgilerinizi düzeltmelisiniz.
 - Ardından controller içinde aşağıda ki gibi model isteği yapılır.
 - Framework'u test edecekseniz Framework ana dizinin de test kullanımı için küçük bir sql dosyası bulunuyor, onu içeri aktarıp testleri gerçekleştirebilirsiniz. Bu dökümantasyonda ki anlatımda bu örnek sql kullanılacaktır.
 ```php
@@ -222,7 +222,6 @@ class FirstControllerClass extends Controller
 - Parametreler model tarafında aşağıda ki şekilde kullanılır.
 - Parametre veri tipinin dizi tipinde olmasına dikkat edin! Metodun imzasını tanımlarken parametre tipini dizi tipine zorlamaya alışmak iyi bir yaklaşım olacaktır bu olası dikkatsizlikler sonucu sizi uğraştırmaktan korur.
 ```php
-namespace BaseFrame\App\Controller;
 namespace BaseFrame\App\Model;
 use BaseFrame\System\Core\Model;
 
