@@ -36,7 +36,7 @@ class FirstControllerClass extends Controller
 }
 ```
 
-- <code>app/views</code> dizini altında <code>firstView.php</code> dosyasını oluşturun.
+- <code>app/views</code> dizini altında <code>firstView.php</code> dosyasını oluşturun ve aşağıda ki html kodunu ekleyin.
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +50,7 @@ class FirstControllerClass extends Controller
   </body>
 </html>
 ```
-- Şu ana kadar url'e göre view çağırmayı öğrendik.
+- Şu ana kadar url'e göre nasıl view çağıracağımızı öğrendik.
 
 ## View'a Veri Göndermek
 - View çağırılırken view adından sonra ikinci parametre olarak gönderilecek veri, dizi olarak anahtar değer çifti olacak şekilde gönderilir. Bunu genellikle model tarafından yapılan veritabanı isteklerinden dönen cevaplar için kullanacaksınız.
