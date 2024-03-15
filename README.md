@@ -274,7 +274,7 @@ Router::run('/user-registration', 'Record@userRegistration', 'post');
 - Eğer bir yol almak istiyorsak rotanın yolunu belirttiğimiz ilk parametre de değişken kısım neresi olacaksa oraya <code>{url}</code> tanımı yerleştirilmelidir.
 - Eğer numerik bir değer alacaksak rotanın yolunu belirttiğimiz ilk parametre de numerik alan neresi olacaksa oraya <code>{id}</code> tanımı yerleştirilmelidir.
 - Örneğin şöyle bir senaryo olsun. Yapay zeka modellerinin olduğu bir kategori ve bu kategori de ki yapay zeka modellerinin her birinin bir numerik id'si olsun.
-- http://localhost/php-base-frame/product/artificial-intelligence-models/12
+- http://localhost/php-base-frame/categories/artificial-intelligence-models/12
 - Url'in yukarıda ki olduğunu farz edelim.
 - Bu senaryoya göre rota tanımlamasını aşağıda ki gibi yapmalıyız.
 ```php
