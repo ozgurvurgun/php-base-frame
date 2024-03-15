@@ -325,7 +325,7 @@ class List extends Controller
 ```php
   Router::hasRoute('404', true);
 ``` 
-- hasRoute metodu çağırılmalıdır ve ilk parametresi true olarak verilmelidir. Varsayılan parametre değeri false' dur ve bu durumda metod 404 yönlendirme işini askıya alır. İkinci parametre olarak yolu belirtmeliyiz. Örnekte olduğu gibi yolu <code>404</code> şeklinde verirsek, 404 durumunda <code>http://localhost/php-base-frame/404</code> base url'inize göre buna benzer bir adrese yönlendirme yapılır. Bu yönlendirmeye göre bir rota oluşturmamız gerekir. Örneğe göre, aşağıda ki bir rota ve controller sınıfı oluşturulmalıdır.
+- hasRoute metodu çağırılmalıdır ve ikinci parametresi true olarak verilmelidir. Varsayılan parametre değeri false' dur ve bu durumda metod 404 yönlendirme işini askıya alır. ilk parametre olarak yolu belirtmeliyiz. Örnekte olduğu gibi yolu <code>404</code> şeklinde verirsek, 404 durumunda <code>http://localhost/php-base-frame/404</code> base url'inize göre buna benzer bir adrese yönlendirme yapılır. Bu yönlendirmeye göre bir rota oluşturmamız gerekir. Örneğe göre, aşağıda ki bir rota ve controller sınıfı oluşturulmalıdır.
 ```php
   Router::run('/404', 'ErrorController@show404Page');
 ``` 
