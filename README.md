@@ -86,7 +86,7 @@ class FirstControllerClass extends Controller
   </body>
 </html>
 ```
-## Model Çalıştırmak
+## Model'lar İle Çalışmak
 - Öncelikle ana dizinde bulunan <code>env.php</code> dosyasında veritabanı bilgilerinizi düzeltmelisiniz.
 - Ardından controller içinde aşağıda ki gibi model isteği yapılır.
 ```php
@@ -101,7 +101,7 @@ class FirstControllerClass extends Controller
     }
 }
 ```
-- Select model sınıfında ki GetTable fonksiyonunun çalışması gerektiğini belirttik. Şimdi ilgili model'i oluşturmalıyız.
+- Select model sınıfında ki GetTable metodunun çalışması gerektiğini belirttik. Şimdi ilgili model'i oluşturmalıyız.
 - <code>app/models</code> dizini altında <code>Select.php</code> dosyasını oluşturun. Ardından dosyaya aşağıda ki kodu yerleştirin.
 ```php
 namespace BaseFrame\App\Model;
@@ -111,7 +111,93 @@ class Select extends Model
 {
     public function GetTable()
     {
-        echo "model run";
+      return $this->queryExec('SELECT * FROM users')->fetchAll();
     }
 }
 ```
+- Model sınıflarımız temel Model sınıfını miras alır. Veri tabanı sorgularını Model sınıfından miras aldığımız queryExec metodu ile yaparız ve sorgu sonucu dönen değeri return edip veriyi controller tarafında işleriz.
+
+## Model'dan Dönen Verileri View'a Basmak
+- Controller tarafında Select model sınıfında ki getTable metodunu çalıştırmak istediğimizi belirttik ve dönüş değerini result değişkenine atadık. Ardından bir view çağırdık ve result değişkeninde ki veriyi data ismi ile view'a gönderdik.
+```php
+namespace BaseFrame\App\Controller;
+use BaseFrame\System\Core\Controller;
+
+class FirstControllerClass extends Controller
+{
+    public function FirstControllerMethod()
+    {
+        $result = $this->model('Select')->getTable();
+        $this->view('firstView', [
+            'data' => $result
+        ]);
+    }
+}
+```
+- Çalıştırmak istediğimiz model için <code>app/models</code> dizini altında <code>Select.php</code> dosyasını oluşturup aşağıda ki kodu ekliyoruz. Burada bir select işlemi yapılıyor ve sonuç return ediliyor.
+```php
+namespace BaseFrame\App\Model;
+use BaseFrame\System\Core\Model;
+
+class Select extends Model
+{
+    public function GetTable()
+    {
+      return $this->queryExec('SELECT * FROM users')->fetchAll();
+    }
+}
+```
+- <code>app/views</code> dizini altında <code>firstView.php</code> view dosyamızı oluşturuyoruz ve aşağıda ki kodu içine ekliyoruz.
+```php
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PHP BASE FRAME</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Activity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($data as $value) : ?>
+        <tr>
+          <td><?= $value['id'] ?></td>
+          <td><?= $value['name'] ?></td>
+          <td><?= $value['surname'] ?></td>
+          <td><?= $value['activity'] ?></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+</body>
+
+</html>
+```
+
