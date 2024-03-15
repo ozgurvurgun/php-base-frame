@@ -22,6 +22,7 @@ git clone https://github.com/ozgurvurgun/php-base-frame.git
   - istek tipi
 - İstek tipi varsayılan olarak <code>get</code> olarak tanımlıdır. İhtiyacınıza göre bunu <code>post</code> olarak değiştirebilirsiniz. Örneğin api oluştururken post yöntemini kullanmak sık bir yaklaşımdır.
 ```php
+use \BaseFrame\System\Core\Router;
 Router::run('/', 'FirstControllerClass@FirstControllerMethod');
 ```
 - <code>app/controllers</code> dizini altında <code>FirstControllerClass.php</code> dosyasını oluşturun ve aşağıda ki kodu ekleyin.
@@ -318,6 +319,28 @@ class List extends Controller
 
 ## Harici Kütüphaneler
 - Projenize dahil etmek istediğiniz harici kütüphaneleri ve helper fonksiyon ve sınıflarını <code>app/libs</code> dizini altına ekleyebilirsiniz, sistem bu dizinde ki php dosyalarını otomatik olarak projeye dahil eder. Eklemelerinizi yaptıktan sonra tek yapmanız gereken bunları controller içinde kullanmaktır.
+
+## 404 Yönetimi
+- Eğer hiçbir controller bulunamazsa bu 404 durumudur. Bu durumu ele almak için <code>app/rotes/routes.php</code> dosyasının en altında
+```php
+  Router::hasRoute('404', true);
+``` 
+- hasRoute metodu çağırılmalıdır ve ilk parametresi true olarak verilmelidir. Varsayılan parametre değeri false' dur ve bu durumda metod 404 yönlendirme işini askıya alır. İkinci parametre olarak yolu belirtmeliyiz. Örnekte olduğu gibi yolu <code>404</code> şeklinde verirsek, 404 durumunda <code>http://localhost/php-base-frame/404</code> base url'inize göre buna benzer bir adrese yönlendirme yapılır. Bu yönlendirmeye göre bir rota oluşturmamız gerekir. Örneğe göre, aşağıda ki bir rota ve controller sınıfı oluşturulmalıdır.
+```php
+  Router::run('/404', 'ErrorController@show404Page');
+``` 
+```php
+namespace BaseFrame\App\Controller;
+use BaseFrame\System\Core\Controller;
+
+class ErrorController extends Controller
+{
+    public function show404Page()
+    {
+        $this->view('404');
+    }
+}
+``` 
 
 ## Ek Bilgiler
 - Rota tanımlamalarında büyük küçük harf hassasiyeti yoktur. Base Frame doğru dosyayı bulacak kadar zekidir :) Fakat okunurluk ve standart bir kullanım olarak sınıf isimlerini büyük harfle başlayarak yazmanız önerilir.
