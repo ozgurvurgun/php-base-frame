@@ -18,6 +18,11 @@ git clone https://github.com/ozgurvurgun/php-base-frame.git
 - Öncelikle ana dizinde ki <code>env.php</code> dosyanında base url tanımlaması yapılmalıdır. Proje klasöründe değişklik yapmadıysanız base url tanımı varsayılan olarak sorun çıkarmayacaktır. Dizini değiştirdiğinizde base url değerini değiştirmeyi unutmayın!
 
 - <code>app/routes</code> dizini altında <code>routes.php</code> dosyasına aşağıda ki routing kodunu ekleyin. Bunun anlamı: Base Url algılanırsa FirstControllerClass sınıfının içinde ki FirstControllerMethod metodunu çalıştır.
+- Run metodu üç parametre alır.
+  - yol.
+  - sınıf@metod
+  - istek tipi
+- İstek tipi varsayılan olarak <code>get</code> olarak tanımlıdır. İhtiyacınıza göre bunu <code>post</code> olarak değiştirebilirsiniz. Örneğin api oluştururken post yöntemini kullanmak sık bir yaklaşımdır.
 ```php
 Router::run('/', 'FirstControllerClass@FirstControllerMethod');
 ```
@@ -257,6 +262,61 @@ class Select extends Model
 - Dilerseniz base url kullanmadan doğrudan kök dizini işaret ederek statik dosyalarınızı implemente edebilirsiniz. Fakat bu önerilmez, bu bazı durumlarda tutarsızklıklara sebep olabilir.
 - base url sonrası yol belirtilirken ilk "/" sembolünün kullanılıp kullanılmayacağı yaptığınız base url atamasına göre farklılık gösterebilir, lütfen buna dikkat edin.
 
+## API
+- Api'ler <code>app/routes/apis.php</code> dosyası içinde tanımlanır. Normal bir route tanımlamaktan farksızdır ve tamamen aynı şekilde çalışır.
+- Aşağıda ki örnek bir api tanımlaması
+```php
+use \BaseFrame\System\Core\Router;
+Router::run('/user-registration', 'Record@userRegistration', 'post');
+```
+## Url'den Veri Almak
+- Rotaları tanımlarken değişken değerlere sahip yolları ve numerik ID'leri yakalayabiliriz.
+- Eğer bir yol almak istiyorsak rotanın yolunu belirttiğimiz ilk parametre de değişken kısım neresi olacaksa oraya <code>{url}</code> tanımı yerleştirilmelidir.
+- Eğer numerik bir değer alacaksak rotanın yolunu belirttiğimiz ilk parametre de numerik alan neresi olacaksa oraya <code>{id}</code> tanımı yerleştirilmelidir.
+- Örneğin şöyle bir senaryo olsun. Yapay zeka modellerinin olduğu bir kategori ve bu kategori de ki yapay zeka modellerinin her birinin bir numerik id'si olsun.
+- http://localhost/php-base-frame/product/artificial-intelligence-models/12
+- Url'in yukarıda ki olduğunu farz edelim.
+- Bu senaryoya göre rota tanımlamasını aşağıda ki gibi yapmalıyız.
+```php
+Router::run('/categories/{url}/{id}', 'List@getList');
+```
+- Rota tanımlamasını yaptıktan sonra elbette her zaman olduğu gibi controller oluşturulur. Gönderdiğimiz parametreleri sırasyıla metoda parametre olarak alırız.
+```php
+namespace BaseFrame\App\Controller;
+use BaseFrame\System\Core\Controller;
+
+class List extends Controller
+{
+    public function getList($url, $id)
+    {
+        $this->view('firstView', [
+            'url' => $url,
+            'id'  => $id
+        ]);
+    }
+}
+```
+- view
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="<?= $BASE_URL ?>/public/css/style.css">
+  <title>PHP BASE FRAME</title>
+</head>
+
+<body>
+  <h1>URL: <?= $url ?></h1>
+  <h1>ID : <?= $id ?></h1>
+  <script src="<?= $BASE_URL ?>/public/js/main.js"></script>
+</body>
+
+</html>
+```
+- Unutmayın temiz ve sürdürülebilir bir geliştirme süreci için sınıfları ve metodları amacına uygun şekilde oluşturmalı görevlerini uygun şekilde vermelisiniz.
 
 
 
