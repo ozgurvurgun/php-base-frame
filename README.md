@@ -354,6 +354,7 @@ class ErrorController extends Controller
   ```php
   $this->view('admin/homePage');
   ```
+- Yerel geliştirme ortamınızda <code>.gitkeep</code> dosyalarını kaldırabilirsiniz.
 
 
 
