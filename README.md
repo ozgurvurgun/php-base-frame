@@ -148,7 +148,7 @@ class Select extends Model
 }
 ```
 - <code>app/views</code> dizini altında <code>firstView.php</code> view dosyamızı oluşturuyoruz ve aşağıda ki kodu içine ekliyoruz.
-```php
+```html
 <!DOCTYPE html>
 <html lang="en">
 
