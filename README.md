@@ -89,6 +89,7 @@ class FirstControllerClass extends Controller
 ## Model'lar İle Çalışmak
 - Öncelikle ana dizinde bulunan <code>env.php</code> dosyasında veritabanı bilgilerinizi düzeltmelisiniz.
 - Ardından controller içinde aşağıda ki gibi model isteği yapılır.
+- Framework'u test edecekseniz Framework ana dizinin de test kullanımı için küçük bir sql dosyası bulunuyor, onu içeri aktarıp testleri gerçekleştirebilirsiniz. Bu dökümantasyonda ki anlatımda bu örnek sql kullanılacaktır.
 ```php
 namespace BaseFrame\App\Controller;
 use BaseFrame\System\Core\Controller;
@@ -148,6 +149,7 @@ class Select extends Model
 }
 ```
 - <code>app/views</code> dizini altında <code>firstView.php</code> view dosyamızı oluşturuyoruz ve aşağıda ki kodu içine ekliyoruz.
+- Bu kullanıma benzer şekilde update, delete, insert işlemlerini model tarafında yapıp işlemin değerini return ederek controller tarafında mantıksal işlemler yapabiliriz.
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -200,4 +202,66 @@ class Select extends Model
 
 </html>
 ```
+## Model'a Parametre Göndermek
+- Aşağıda ki şekilde model metodlarına parametre gönderebilirsiniz.
+```php
+namespace BaseFrame\App\Controller;
+use BaseFrame\System\Core\Controller;
+
+class FirstControllerClass extends Controller
+{
+    public function FirstControllerMethod()
+    {
+        $result = $this->model('Select')->GetTable([1]);
+        $this->view('firstView', [
+            'data' => $result
+        ]);
+    }
+}
+```
+- Parametreler model tarafında aşağıda ki şekilde kullanılır.
+- Parametre veri tipinin dizi tipinde olmasına dikkat edin! Metodun imzasını tanımlarken parametre tipini dizi tipine zorlamaya alışmak iyi bir yaklaşım olacaktır bu olası dikkatsizlikler sonucu sizi uğraştırmaktan korur.
+```php
+namespace BaseFrame\App\Controller;
+namespace BaseFrame\App\Model;
+use BaseFrame\System\Core\Model;
+
+class Select extends Model
+{
+    public function GetTable(array $par)
+    {
+        return $this->queryExec('SELECT * FROM users WHERE activity = ?', $par)->fetchAll();
+    }
+}
+```
+
+## Statik Dosyalar İle Çalışmak
+- <code>public</code> dizini altında <code>css/style.css</code> dosyasını oluşturun.
+- <code>public</code> dizini altında <code>js/main.js</code> dosyasını oluşturun.
+- Diğer bütün statik dosyalarınızı bu şekilde public dizini altında listeleyebilirsiniz.
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="<?= $BASE_URL ?>/public/css/style.css">
+  <title>PHP BASE FRAME</title>
+</head>
+
+<body>
+  <script src="<?= $BASE_URL ?>/public/js/main.js"></script>
+</body>
+
+</html>
+```
+- Dilerseniz base url kullanmadan doğrudan kök dizini işaret ederek statik dosyalarınızı implemente edebilirsiniz. Fakat bu önerilmez, bu bazı durumlarda tutarsızklıklara sebep olabilir.
+- base url sonrası yol belirtilirken ilk "/" sembolünün kullanılıp kullanılmayacağı yaptığınız base url atamasına göre farklılık gösterebilir, lütfen buna dikkat edin.
+
+
+
+
+
+
 
