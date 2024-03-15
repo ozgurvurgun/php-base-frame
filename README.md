@@ -275,12 +275,12 @@ Router::run('/user-registration', 'Record@userRegistration', 'post');
 - Eğer numerik bir değer alacaksak rotanın yolunu belirttiğimiz ilk parametre de numerik alan neresi olacaksa oraya <code>{id}</code> tanımı yerleştirilmelidir.
 - Örneğin şöyle bir senaryo olsun. Yapay zeka modellerinin olduğu bir kategori ve bu kategori de ki yapay zeka modellerinin her birinin bir numerik id'si olsun.
 - http://localhost/php-base-frame/categories/artificial-intelligence-models/12
-- Url'in yukarıda ki olduğunu farz edelim.
+- Url'in yukarıda ki gibi olduğunu farz edelim.
 - Bu senaryoya göre rota tanımlamasını aşağıda ki gibi yapmalıyız.
 ```php
 Router::run('/categories/{url}/{id}', 'List@getList');
 ```
-- Rota tanımlamasını yaptıktan sonra elbette her zaman olduğu gibi controller oluşturulur. Gönderdiğimiz parametreleri sırasyıla metoda parametre olarak alırız.
+- Rota tanımlamasını yaptıktan sonra elbette her zaman olduğu gibi controller oluşturulur. Gönderdiğimiz değerleri sırasyıla metoda parametre olarak alırız.
 ```php
 namespace BaseFrame\App\Controller;
 use BaseFrame\System\Core\Controller;
@@ -296,7 +296,7 @@ class List extends Controller
     }
 }
 ```
-- view
+- firstView view
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -316,7 +316,10 @@ class List extends Controller
 
 </html>
 ```
-- Unutmayın temiz ve sürdürülebilir bir geliştirme süreci için sınıfları ve metodları amacına uygun şekilde oluşturmalı görevlerini uygun şekilde vermelisiniz.
+- Unutmayın temiz ve sürdürülebilir bir geliştirme süreci için sınıfları ve metodları amacına uygun şekilde oluşturmalı görevlerini uygun şekilde kurgulamalısınız.
+
+## Harici Kütüphaneler
+- Projenize dahil etmek istediğiniz harici kütüphaneleri ve helper fonksiyon ve sınıflarını <code>app/libs</code> dizini altına ekleyebilirsiniz, sistem bu dizinde ki php dosyalarını otomatik olarak projeye dahil eder. Eklemelerinizi yaptıktan sonra tek yapmanız gereken bunları controller içinde kullanmaktır.
 
 
 
