@@ -119,7 +119,7 @@ class Select extends Model
 - Model sınıflarımız temel Model sınıfını miras alır. Veri tabanı sorgularını Model sınıfından miras aldığımız queryExec metodu ile yaparız ve sorgu sonucu dönen değeri return edip veriyi controller tarafında işleriz.
 
 ## Model'dan Dönen Verileri View'a Basmak
-- Controller tarafında Select model sınıfında ki getTable metodunu çalıştırmak istediğimizi belirttik ve dönüş değerini result değişkenine atadık. Ardından bir view çağırdık ve result değişkeninde ki veriyi data ismi ile view'a gönderdik.
+- Aşağıda, controller tarafında Select model sınıfında ki getTable metodunu çalıştırmak istediğimizi belirttik ve dönüş değerini result değişkenine atadık. Ardından bir view çağırdık ve result değişkeninde ki veriyi data ismi ile view'a gönderdik.
 ```php
 namespace BaseFrame\App\Controller;
 use BaseFrame\System\Core\Controller;
