@@ -41,4 +41,4 @@ use \BaseFrame\System\Core\Router;
 */
 
 
-Router::hasRoute();
+Router::hasRoute('404', true);

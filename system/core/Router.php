@@ -80,10 +80,11 @@ class Router
         return $controllerFile;
     }
 
-    public static function hasRoute(bool $activity = false): void
+    public static function hasRoute(string $path, bool $activity = false): void
     {
         if (self::$hasRoute === false && $activity) {
-            header("Location:" . self::$BASE_URL . "404");
+            $url = rtrim(self::$BASE_URL, '/');
+            header('Location:' . $url . '/' . $path);
         }
     }
 }
