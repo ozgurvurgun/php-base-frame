@@ -318,7 +318,7 @@ class List extends Controller
 - Projenize dahil etmek istediğiniz harici kütüphaneleri ve helper fonksiyon ve sınıflarını <code>app/libs</code> dizini altına ekleyebilirsiniz, sistem bu dizinde ki php dosyalarını otomatik olarak projeye dahil eder. Eklemelerinizi yaptıktan sonra tek yapmanız gereken bunları controller içinde kullanmaktır.
 
 ## 404 Yönetimi
-- Eğer hiçbir controller bulunamazsa bu 404 durumudur. Bu durumu ele almak için <code>app/rotes/routes.php</code> dosyasının en altında
+- Eğer hiçbir controller bulunamazsa bu 404 durumudur. Bu durumu ele almak için <code>app/routes/routes.php</code> dosyasının en altında
 ```php
   Router::hasRoute('404', true);
 ``` 
